@@ -1,0 +1,48 @@
+@charset "UTF-8";
+
+/* TAG */
+h1{
+	font-size: 2rem;
+	padding:1rem;
+	text-align: center;
+}
+
+p{
+	color: white;
+	font-size: 1.2rem;
+	padding: 0.3rem;
+}
+
+body{
+	background-color:DodgerBlue;
+	position: absolute;	
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+input{
+	text-align: left;
+}
+/* CLASS */
+.input_frontPage{
+	text-align: right;
+}
+
+.body{
+	display: grid;
+	grid-template-columns: 0.5, 0.5;
+}
+
+.log_in{
+	grid-column-start: 0;
+	grid-column-end: 0;
+}
+
+.log_on{
+	
+}
+
+/* ID */
+
+

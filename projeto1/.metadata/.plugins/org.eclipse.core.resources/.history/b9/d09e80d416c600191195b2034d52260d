@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+	<htmllang="br">
+	<head>
+		<metacharset="utf-8">
+		<title>Note Keeper</title>
+	</head>
+	<body>
+		<h1>Hello World</h1>
+		<p>Tomcat funcionando.</p>
+	</body>
+</html>

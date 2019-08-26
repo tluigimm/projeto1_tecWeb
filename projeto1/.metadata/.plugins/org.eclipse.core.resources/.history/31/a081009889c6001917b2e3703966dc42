@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang = "us">
+	<head>
+		<link href="reset.css" rel="stylesheet">
+		<link href="loginPage.css" rel="stylesheet">
+		<metacharset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		
+		<title>Note Keeper</title>
+		
+	</head>
+	<body class = 'body'>
+		<div class = 'log_in'>
+			<h1>Log in</h1>
+			<p> 
+				username: <input class="input_frontPage" type='text' name='username'>   
+			</p>
+			
+			<p> 
+				password:  <input class="input_frontPage" type='text' name='password'> 
+			</p>
+			
+		</div>
+		
+		<div class = 'log_on'>
+			<h1>Log on</h1>
+			<p>
+				e-mail: <input class="input_frontPage" type='text' name='username'>
+			</p>
+			<p>
+				username: <input class="input_frontPage" type='text' name='username'>
+			</p>
+			<p>
+				password: <input class="input_frontPage" type='text' name='password'>
+			</p>
+			<p>
+				repeat password: <input class="input_frontPage" type='text' name='password'>
+			</p>
+		</div>
+	</body>
+</html>

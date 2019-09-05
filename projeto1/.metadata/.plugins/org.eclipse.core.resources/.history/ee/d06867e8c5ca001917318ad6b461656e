@@ -1,0 +1,17 @@
+package br.edu.insper;
+import java.util.LinkedList;
+
+public class Class {
+	private String subject;
+	private LinkedList<Assignment> assignments;
+	
+	public Class(String subject) {
+		this.subject = subject;
+		this.assignments = new LinkedList<>();
+	}
+	
+	public void addAssignment(Assignment newAssignment) {
+		assignments.add(newAssignment);
+	}
+		
+}

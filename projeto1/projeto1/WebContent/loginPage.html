@@ -12,35 +12,39 @@
 	<body class = 'body'>
 		<div class = 'log_in'>
 			<h1>Log-in</h1>
-			<div class = 'boxes'> 
-				<p class = 'p1'> username: </p> <input class="input_frontPage" type='text' name='username'>   
-			</div>
 			
-			<div class = 'boxes'> 
-				<p class = 'p1'> password: </p> <input class="input_frontPage" type='text' name='password'> 
-			</div>
+			<form action='LogIn' method='post'>
+				<div class = 'boxes'>
+					<p class = 'p'> username: </p> <input class="input_frontPage" type='text' name='username'>
+				</div>
+				
+				<div class = 'boxes'> 
+					<p class = 'p'> password: </p> <input class="input_frontPage" type='password' name='password'> 
+				</div>
 			
-			<button type='button' class = 'button'> log-in </button>
-		
+				<input class='button' type="submit" value="log-in">
+			</form>
+			
 		</div>
 		
 		<div class = 'log_on'>
 			<h1>Log-on</h1>
-			<div class = 'boxes'> 
-				<p class = 'p2'> e-mail: </p> <input class="input_frontPage" type='text' name='username'>
-			</div>
-			<div class = 'boxes'> 
-				<p class = 'p2'> username: </p> <input class="input_frontPage" type='text' name='username'>
-			</div>
-			<div class = 'boxes'> 
-				<p class = 'p2'> password: </p> <input class="input_frontPage" type='text' name='password'>
-			</div>
-			<div class = 'boxes'> 
-				<p class = 'p2'> repeat password: </p> <input class="input_frontPage" type='text' name='password'>
-			</div>
-		
-			<button type='button' class = 'button'> log-on </button>
-		
+			
+			<form action='LogOn' method='post'>
+				<div class = 'boxes'> 
+					<p class = 'p'> username: </p> <input class="input_frontPage" type='text' name='username'>
+				</div>
+				<div class = 'boxes'> 
+					<p class = 'p'> password: </p> <input class="input_frontPage" type='password' name='password1'>
+				</div>
+				<div class = 'boxes'> 
+					<p class = 'p'> repeat password:</p> <input class="input_frontPage" type='password' name='password2'>
+					
+				</div>
+			
+				<input class='button' type="submit" value="log-on">
+			</form>
+			
 		</div>
 	</body>
 </html>

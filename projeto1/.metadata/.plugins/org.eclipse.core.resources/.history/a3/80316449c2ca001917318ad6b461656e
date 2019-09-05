@@ -1,0 +1,13 @@
+package br.edu.insper;
+import java.util.List;
+
+public class Class {
+	private String subject;
+	private List<Assignment> assignments;
+	
+	public Class(String subject) {
+		this.subject = subject;
+	}
+	
+	
+}

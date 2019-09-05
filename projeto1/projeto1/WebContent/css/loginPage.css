@@ -1,5 +1,6 @@
 @charset "UTF-8";
 
+
 /* TAG */
 h1{
 	font-weight: bold;
@@ -9,7 +10,7 @@ h1{
 }
 
 body{
-	background-color:DodgerBlue;
+	background-color: DodgerBlue;
 	position: absolute;	
 	top: 50%;
 	left: 50%;
@@ -20,18 +21,9 @@ body{
 input{
 	text-align: left;
 	font-color: black;
+	border-radius: 0.5rem;
 }
 
-button{
-	font-family: 'Product sans', sans-serif;
-	text-align: center;
-	botton: 0%;
-	margin: 1rem;
-    height: 2rem;
-    width: 5rem;
-	left: 50%;
-	
-}
 
 /* CLASS */
 .body{
@@ -44,7 +36,10 @@ button{
 	grid-column-start: 1;
 	grid-column-end: 1;
 	text-align: center;
-	padding: 1rem;
+	margin: 2rem;
+	
+	display: grid;
+	grid-template-rows: 0.9, 0.1;
 }
 
 .log_on{
@@ -52,39 +47,45 @@ button{
 	grid-column-start: 2;
 	grid-column-end: 2;
 	text-align: center;
-	padding: 1rem;
+	margin: 2rem;
+	
+	display: grid;
+	grid-template-rows: 0.9, 0.1;
 }
 
 .boxes{
 	color: white;
 	font-size: 1.5rem;
 	padding: 0.8rem;
+	display: grid;
+	
+	grid-row-start: 1;
+	grid-row-end: 1;
+	
+	grid-template-columns: 0.5, 0.5;
 }
 
 
 .input_frontPage{
+	widht: 100%;
 	text-align: center;
-	display: block;
-  	margin-left: auto;
-  	widht: 40%;
-  	transform: translate(-50%, -50%);
+	grid-column-start: 2;
+	grid-column-end: 2;
 }
 
-.p1{
-	position: absolute;
-	left: 10%;
-	display: block;
-  	margin-right: auto;
-  	widht: 40%;
-  	transform: translate(-50%, -50%);
+.p{
+	text-align: left;
+	grid-column-start: 1;
+	grid-column-end: 1;
 }
-.p2{
-	position: absolute;
-	left: 60%;
-	display: block;
-  	margin-right: auto;
-  	widht: 40%;
-  	transform: translate(-50%, -50%);
+
+.button{
+	border-radius: 0rem;
+	font-family: 'Product sans', sans-serif;
+	text-align: center;
+	margin: 1rem;
+	grid-row-start: 2;
+	grid-row-end: 2;
 }
 
 /* ID */

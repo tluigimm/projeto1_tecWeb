@@ -1,0 +1,36 @@
+@charset "UTF-8";@charset "UTF-8";
+
+/* TAG */
+h1{
+	position: fixed;
+	font-weight: bold;
+	font-size: 2.5rem;
+	padding: 2rem;
+	width: 100%;
+	background-color: DodgerBlue;
+	border-bottom: 0.2rem black;
+}
+
+/* CLASS */
+.body{
+	display: grid;
+	grid-tamplate-rows: 0.1, 0.9;
+}
+
+.title{
+	grid-row-start: 1;
+	grid-row-end: 1;
+}
+
+.subjects{
+	grid-row-start: 2;
+	grid-row-end: 2;
+	
+	display: grid;
+	grid-template-rows: 0.1, 0.9;
+	
+}
+
+/* ID */
+
+

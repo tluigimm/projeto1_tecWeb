@@ -5,14 +5,14 @@ public class User {
 	private String username;
 	private String password;
 	
-	//	setter id
-	public void setId(int id) {
-		this.id = id;
-	}
-	
 	//	getter id
 	public int getId() {
 		return id;
+	}
+	
+	// setter id
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 	//	setter username

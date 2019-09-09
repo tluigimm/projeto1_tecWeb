@@ -1,6 +1,8 @@
 package br.edu.insper;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -28,6 +30,22 @@ public class LogIn extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		String username = request.getParameter("username");
+		String password = request.getParameter("password");
+		
+		DAO dao = new DAO();
+		
+		List<User> userList = dao.getUsers();
+		
+		for (User user : userList) {
+			if((user.getUsername() == username) && (user.getPassword() == password)) {
+				System.out.println("welcome!!");
+			}
+			else {
+				System.out.println("username or password is wrong");
+			}
+		}
 	}
 
 	/**

@@ -53,6 +53,10 @@ public class LogOn extends HttpServlet {
 
 			System.out.println(user.getUsername());
 			System.out.println(user.getPassword());
+			
+			DAO dao = new DAO();
+			
+			dao.addUser(user);
 		} 
 		
 		else {

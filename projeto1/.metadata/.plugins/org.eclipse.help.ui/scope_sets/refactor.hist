@@ -1,0 +1,6 @@
+#Thu Sep 05 14:59:10 BRT 2019
+__DEFAULT__=false
+org.eclipse.sdk.Eclipse.master=true
+org.eclipse.sdk.Google.master=true
+org.eclipse.help.ui.localSearch.master=true
+expression=refactor

@@ -1,0 +1,43 @@
+@charset "UTF-8";
+
+@charset "UTF-8";@charset "UTF-8";
+
+/* TAG */
+
+h1{
+	font-weight: bold;
+	font-size: 2.5rem;
+	padding: 2rem;
+}
+
+p{
+	color:white;
+}
+
+input{
+	text-align: center;
+}
+
+/* CLASS */
+
+.body{
+}
+
+.div{
+	
+	width: 100%;
+	heigh: 100%;
+	
+	background-color: DodgerBlue;
+	border: 0.4rem solid black;
+	
+	text-align: center;
+	font-size: 1.5rem;
+	
+	margin: 1rem;
+	padding: 1rem;
+}
+
+/* ID */
+
+

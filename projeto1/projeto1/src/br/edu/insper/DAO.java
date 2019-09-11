@@ -13,21 +13,15 @@ public class DAO {
 	public DAO() {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-		} catch (ClassNotFoundException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-
-		try {
 			connection = DriverManager.getConnection(
-					"jdbc:mysql://localhost/db","root","102030");
-		} catch (SQLException e) {
+					"jdbc:mysql://remotemysql.com:3306/wsjQIHnIAM","wsjQIHnIAM","6vywDqNWtE");
+		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
 	}
-	
+		
 	// USERS ------------------------------------------------------------------
 	
 	// list users
@@ -41,10 +35,12 @@ public class DAO {
 		
 			while (rs.next()) {
 				User user = new User();
+				user.setId(Integer.parseInt(rs.getString("id")));
 				user.setUsername(rs.getString("username"));
 				user.setPassword(rs.getString("password"));
 				
 				users.add(user);
+				
 			}
 			
 			rs.close();
@@ -54,86 +50,151 @@ public class DAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 		return users;
 	}
 	
 	// add user
 	public void addUser(User user) {
-		String sql = "INSERT INTO users" + 
-					"(username, password) values(?, ?)";
+		String sql1 = "INSERT INTO users(username, password) values(?, ?)";
+		String sql2 = "SELECT id FROM users WHERE username=?";
+		
 		try {
-			PreparedStatement stmt = connection.prepareStatement(sql);
-//			stmt.setInt(1, user.getId());
-			stmt.setString(1, user.getUsername());
-			stmt.setString(2, user.getPassword());
+			// add user and password
+			PreparedStatement stmt1 = connection.prepareStatement(sql1);
+			stmt1.setString(1, user.getUsername());
+			stmt1.setString(2, user.getPassword());
 			
-			stmt.execute();
-			stmt.close();
+			stmt1.execute();
+			stmt1.close();
+			
+			// add id
+			PreparedStatement stmt2 = connection.prepareStatement(sql2);
+			stmt2.setString(1, user.getUsername());
+			ResultSet rs = stmt2.executeQuery();
+			
+			while(rs.next()) {
+				user.setId(Integer.parseInt(rs.getString("id")));
+			}
+			rs.close();
+			stmt2.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 	
-	// edit user
-	public void alterUser(User user) {
+	// get username
+	public String getUsername(int userId) {
+		String username = new String();
 		try {
-			String sql = "UPDATE user SET " + "username=?, password=? WHERE id=?";
+			String sql = "SELECT username FROM users WHERE id=?";
 			PreparedStatement stmt = connection.prepareStatement(sql);
-			stmt.setString(1, user.getUsername());
-			stmt.setString(2, user.getPassword());
+			stmt.setInt(1, userId);
 			
-			stmt.execute();
+			ResultSet rs = stmt.executeQuery();
+			
+			while (rs.next()) {
+				username = rs.getString("username");
+			}
+			
 			stmt.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}	
+		}
+		return username;
+	}
+	
+	// get username
+	public String getId(User user) {
+		String id = null;
+		try {
+			String sql = "SELECT id FROM users WHERE username=?";
+			PreparedStatement stmt = connection.prepareStatement(sql);
+			stmt.setString(1, user.getUsername());
+			
+			ResultSet rs = stmt.executeQuery();
+			
+			while (rs.next()) {
+				id = rs.getString("id");
+			}
+			
+			stmt.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return id;
 	}
 	
 	// NOTES ------------------------------------------------------------------
 	
-	// list assignments
-	public List<Assignment> getAssignments() {
-		List<Assignment> Assignments = new ArrayList<Assignment>();
-
-		try {
-			PreparedStatement stmt = connection.
-					prepareStatement("SELECT * FROM notes");
-			ResultSet rs = stmt.executeQuery();
+	// list assignments from user
+	public List<Assignment> getUserAssignments(int userId) {
+		List<Assignment> asgs = new ArrayList<Assignment>();
+		PreparedStatement stmt1 = null;
 		
-			while (rs.next()) {
+		try {
+			
+			System.out.println("entrou onde devia");
+			stmt1 = connection.prepareStatement("SELECT * FROM notes WHERE user_id=?");
+			stmt1.setInt(1, userId);
+			
+			ResultSet rs1 = stmt1.executeQuery();
+			
+			while (rs1.next()) {
 				Assignment asg = new Assignment();
-				asg.setAssignment(rs.getString("assignment"));
-				asg.setDate(rs.getString("date"));
+				asg.setId(rs1.getInt("id"));
+				asg.setSub(rs1.getString("subject"));
+				asg.setNote(rs1.getString("note"));
+				asg.setDate(rs1.getString("date"));
 				
-				Assignments.add(asg);
+				asgs.add(asg);
 			}
 			
-			rs.close();
-			stmt.close();
+			rs1.close();
+			stmt1.close();
 		
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		return Assignments;
+		return asgs;
 	}
 	
 	// add assignment
-	public void addAssignment(Assignment asg) {
-		String sql = "INSERT INTO notes" + 
-					"(id, userId, note, date) values(?, ?, ?, ?)";
+	public void createAssignment(Assignment asg) {
+		String sql1 = "INSERT INTO notes" + 
+					"(user_id, subject, note, date) values(?, ?, ?, ?)";
+		String sql2 = "SELECT id FROM notes WHERE note=?";
 		try {
-			PreparedStatement stmt = connection.prepareStatement(sql);
-			stmt.setInt(1, asg.getId());
-			stmt.setInt(2, asg.getUserId());
-			stmt.setString(3, asg.getAssignment());
-			stmt.setString(4, asg.getDate());
 			
-			stmt.execute();
-			stmt.close();
+			PreparedStatement stmt1 = connection.prepareStatement(sql1);
+			stmt1.setInt(1, asg.getUserId());
+			stmt1.setString(2, asg.getSub());
+			stmt1.setString(3, asg.getNote());
+			stmt1.setString(4, asg.getDate());
+			
+			stmt1.execute();
+			stmt1.close();
+			
+			// add id
+			PreparedStatement stmt2 = connection.prepareStatement(sql2);
+			stmt2.setString(1, asg.getNote());
+			ResultSet rs = stmt2.executeQuery();
+			
+			while(rs.next()) {
+				asg.setId(Integer.parseInt(rs.getString("id")));
+				System.out.println("id: "        + asg.getId());
+				System.out.println("subject: "   + asg.getSub());
+				System.out.println("note: " 	 + asg.getNote());
+				System.out.println("date: " 	 + asg.getDate());
+			}
+			rs.close();
+			stmt2.close();
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -141,12 +202,11 @@ public class DAO {
 	}
 	
 	// remove assignment
-	public void removeAssignment(Integer userId) {
-		PreparedStatement stmt;
+	public void removeAssignment(String asgId) {
 		try {
-			stmt = connection.prepareStatement(
-					"DELETE FROM notes WHERE user_id=?");
-			stmt.setInt(1, userId);
+			PreparedStatement stmt = connection.prepareStatement("DELETE FROM notes WHERE id=?");
+			System.out.println("asgId: " + asgId);
+			stmt.setString(1, asgId);
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {
@@ -155,13 +215,15 @@ public class DAO {
 		}
 	}
 	
+	
 	// edit assignment
-	public void alterAssginment(Assignment asg) {
+	public void editAssginment(Assignment asg) {
 		try {
-			String sql = "UPDATE notes SET " + "note=?, date=? WHERE id=?";
+			String sql = "UPDATE notes SET note=?, date=? WHERE id=?";
 			PreparedStatement stmt = connection.prepareStatement(sql);
-			stmt.setString(1, asg.getAssignment());
+			stmt.setString(1, asg.getNote());
 			stmt.setString(2, asg.getDate());
+			stmt.setInt(3, asg.getId());
 			
 			stmt.execute();
 			stmt.close();
@@ -172,7 +234,6 @@ public class DAO {
 	}
 	
 	// close connection 
-	
 	public void close() {
 		try {
 			connection.close();
@@ -181,5 +242,4 @@ public class DAO {
 			e.printStackTrace();
 		}
 	}
-	
 }

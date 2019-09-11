@@ -3,8 +3,14 @@ package br.edu.insper;
 public class Assignment {
 	private int id;
 	private int userId;
-	private String assignment;
+	private String subject;
+	private String note;
 	private String date;
+	
+	//setter id
+	public void setId(int id) {
+		this.id = id;
+	}
 	
 	//getter id
 	public int getId() {
@@ -21,14 +27,24 @@ public class Assignment {
 		return this.userId;
 	}
 	
+	//setter subject
+	public void setSub(String subject){
+		this.subject = subject;
+	}
+	
+	//setter subject
+	public String getSub(){
+			return this.subject;
+		}
+	
 	//setter assignment	
-	public void setAssignment(String assignment) {
-		this.assignment = assignment;
+	public void setNote(String note) {
+		this.note = note;
 	}
 	
 	//getter assignment	
-	public String getAssignment () {
-		return this.assignment;
+	public String getNote() {
+		return this.note;
 	}
 	
 	//setter date

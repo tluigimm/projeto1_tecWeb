@@ -1,45 +1,34 @@
 package br.edu.insper;
-
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+@WebServlet("/UpdateAssignment")
 public class UpdateAssignment extends HttpServlet{
+	private static final long serialVersionUID = 1L;
 	
 	@Override
-	protected void doGet(HttpServletRequest request,
-						HttpServletResponse response)
-	throws ServletException, IOException {
-		PrintWriter out= response.getWriter();
-		out.println("<html><body>");
-		out.println("<form method='post'>");
-		out.println("Assignment: <input type='text' name='asg'><br>");
-		out.println("Date: <input type='text' name='date'>");
-		out.println("<input type='submit' value='Submit'>");
-		out.println("</form>");
-		out.println("</body></html>");
+	protected void doGet (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	}
 	
 	@Override
-	protected void doPost(HttpServletRequest request,
-						HttpServletResponse response)
-	throws ServletException, IOException{
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		DAO dao = new DAO();
 		
 		Assignment asg = new Assignment();
-		asg.setAssignment(request.getParameter("asg"));
+		asg.setNote(request.getParameter("asg"));
 		asg.setDate(request.getParameter("date"));
+		asg.setId(Integer.parseInt(request.getParameter("asgId")));
+		dao.editAssginment(asg);
 		
-		dao.alterAssginment(asg);
-		
-		PrintWriter out = response.getWriter();
-		out.println("<html><body>");
-		out.println("Your assignment has been updated");
-		out.println("</body></html>");
+		int userId = Integer.parseInt(request.getParameter("userId"));
+		request.setAttribute("userId", userId);
+		request.getRequestDispatcher("assignments.jsp").forward(request, response);
+		request.setAttribute("userId", userId);
 		
 		dao.close();
 

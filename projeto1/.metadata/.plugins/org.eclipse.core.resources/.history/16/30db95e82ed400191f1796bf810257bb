@@ -1,0 +1,29 @@
+package br.edu.insper;
+import java.io.*;
+import javax.servlet.*;
+import java.util.*;
+import javax.servlet.http.*;
+
+public class CreateUser extends HttpServlet {
+
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		DAO dao = new DAO();
+		User user = new User();
+		Random random = new Random();
+		
+		user.setUsername(request.getParameter("username"));
+		user.setPassword(request.getParameter("password"));
+		user.setSessionId(random.next(32));
+		
+		dao.addUser(user);
+		
+		dao.close();
+	}
+
+}

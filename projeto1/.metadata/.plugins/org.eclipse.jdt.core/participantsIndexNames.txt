@@ -1,3 +1,7 @@
 INDEX VERSION 1.131
 /home/tluigimm/Desktop/faculdade/4 semestre/TecWeb/projeto1_tecWeb/projeto1/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/803144257.index
 /MestreSugestoesLive/src
+/home/tluigimm/Desktop/faculdade/4 semestre/TecWeb/projeto1_tecWeb/projeto1/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/3886438234.index
+/projeto1/src
+/home/tluigimm/Desktop/faculdade/4 semestre/TecWeb/projeto1_tecWeb/projeto1/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/1976794837.index
+/projeto1/src

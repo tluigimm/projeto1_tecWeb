@@ -1,0 +1,19 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link href="css/reset.css" rel="stylesheet">
+		<title>edit assignment</title>
+	</head>
+	<body>
+		<h1>Edit your assignment</h1>
+		
+		<form action='UpdateAssignment' method='post'>
+			asignment: <input type='text' type='submit' name='asg'>
+			date: <input type='text' type='submit' name='date'>
+		
+		</form>
+	</body>
+</html>

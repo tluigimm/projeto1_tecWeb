@@ -1,6 +1,7 @@
 package br.edu.insper;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -49,28 +50,28 @@ public class LogOn extends HttpServlet {
 			
 			user.setUsername(username);
 			user.setPassword(password);
-			
 
 			System.out.println(user.getUsername());
 			System.out.println(user.getPassword());
 			
 			DAO dao = new DAO();
 			
-			dao.addUser(user);
-		} 
+			dao.addUser(user);	
+			response.sendRedirect("loginPage.jsp");
+		}
 		
 		else {
 			if (username == "") {
-				System.out.println("insira um username");
-			}
-			else if (password1 == "" || password2 == ""){
-				System.out.println("preencha senhas");
+				System.out.println("insert a username");
+				response.sendRedirect("noUsername.jsp");
 			}
 			else if (password1.length() < 6) {
-				System.out.println("senha muito curta");
+				System.out.println("password too short");
+				response.sendRedirect("shortPassword.jsp");
 			}
 			else {
-				System.out.println("senhas diferentes");
+				System.out.println("different passwords");
+				response.sendRedirect("differentPasswords.jsp");
 			}
 		}
 	}

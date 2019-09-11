@@ -1,0 +1,43 @@
+@charset "UTF-8";
+
+@charset "UTF-8";@charset "UTF-8";
+
+/* TAG */
+
+h1{
+	font-weight: bold;
+	font-size: 2.5rem;
+	padding: 2rem;
+}
+
+p{
+	color:white;
+}
+
+/* CLASS */
+
+.body{
+	display: grid;
+	grid-template-columns: 0.33, 0.34, 0.33;
+	grid-template-rows: 0.33, 0.34, 0.33;
+}
+
+.div{
+	grid-column-start: 2;
+	grid-column-end: 2;
+	grid-row-start: 2;
+	grid-row-end: 2;
+	
+	background-color: DodgerBlue;
+	border: 0.4rem solid black;
+	
+	text-align: center;
+	font-size: 1.5rem;
+	
+	margin: 1rem;
+	padding: 1rem;
+}
+
+/* ID */
+
+

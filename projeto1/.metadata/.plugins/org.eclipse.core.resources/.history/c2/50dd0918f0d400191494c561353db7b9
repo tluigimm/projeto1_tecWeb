@@ -39,33 +39,25 @@ public class LogIn extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 		
+		DAO dao = new DAO();
+		User user = new User();
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-		
-		DAO dao = new DAO();
+		String id = dao.getId(user)
 		
 		List<User> userList = dao.getUsers();
-		List<String> passwords = new ArrayList<>();
-		List<String> usernames = new ArrayList<>();
-		
 		
 		for (User user : userList) {
-			usernames.add(user.getUsername());
-			passwords.add(user.getPassword());
-		}
-		
-		if(usernames.contains(username) && passwords.contains(password)) {
-			System.out.println("welcome!!");
-			
-			User user = new User();
-			user.setUsername(username);
-			
-			request.setAttribute("userId", user.getId());
-			request.getRequestDispatcher("assignments.jsp").forward(request, response);
-			
-		}
-		else {
-			request.getRequestDispatcher("wrongUserOrPassword.jsp").forward(request, response);
+			if((user.getUsername().equals(username)) && (user.getPassword().equals(password))) {
+				System.out.println("welcome!!");
+				
+				request.setAttribute("userId", user.getId());
+				request.getRequestDispatcher("assignments.jsp").forward(request, response);
+				
+			}
+			else {
+				request.getRequestDispatcher("wrongUserOrPassword.jsp").forward(request, response);
+			}
 		}
 	}
 }

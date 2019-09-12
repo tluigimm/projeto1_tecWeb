@@ -57,7 +57,7 @@ public class LogIn extends HttpServlet {
 		if(usernames.contains(username) && passwords.contains(password)) {
 			System.out.println("welcome!!");
 			
-			User user = new User();
+			User user = new User;
 			user.setUsername(username);
 			
 			request.setAttribute("userId", user.getId());

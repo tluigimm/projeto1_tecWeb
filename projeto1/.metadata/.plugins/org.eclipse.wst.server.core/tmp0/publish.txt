@@ -1,3 +1,4 @@
 #Tomcat publish data
-#Wed Sep 11 21:40:53 BRT 2019
+#Mon Sep 23 21:31:43 BRT 2019
 org.eclipse.jst.jee.server\:projeto1=/home/tluigimm/apache-tomcat-9.0.22/wtpwebapps/projeto1
+org.eclipse.jst.jee.server\:/binary\:/home/tluigimm/.m2/repository/org/springframework/spring-web/4.3.3.RELEASE/spring-web-4.3.3.RELEASE.jar=/home/tluigimm/apache-tomcat-9.0.22/wtpwebapps/projeto1/WEB-INF/lib/spring-web-4.3.3.RELEASE.jar
